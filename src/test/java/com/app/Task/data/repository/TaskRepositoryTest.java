@@ -1,6 +1,7 @@
 package com.app.Task.data.repository;
 
 import com.app.Task.data.model.Task;
+import com.app.Task.data.model.TaskStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,7 +31,7 @@ class TaskRepositoryTest {
         Task myTask = Task.builder()
                 .name("Clean the bath-room")
                 .type("Toilet job")
-                .status("active").build();
+                .status(TaskStatus.OPEN).build();
         log.info("Task object created ---> {}", myTask);
         repository.save(myTask);
 

@@ -25,11 +25,33 @@ public class Task {
 
     private String type;
 
+    @Column(length = 1000, name = "description")
+    private String description;
+
+    @Column(length = 5000, name = "details")
+    private String detail;
+
+    @Column(name = "comments")
+    private String comment;
+
     @CreationTimestamp
     private Date createdAt;
 
     @UpdateTimestamp
     private Date updatedAt;
 
-    private String status;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date expiredAt;
+
+    @JoinColumn(columnDefinition = "assignee_user_id", name = "assignee_user_id")
+    @ManyToOne(optional = false)
+    private AppUser assignee;
+
+    @JoinColumn(columnDefinition = "project_id")
+    @ManyToOne(optional = false)
+    private Project project;
+
+    @Column(nullable = false)
+    @Enumerated(value = EnumType.STRING)
+    private TaskStatus status;
 }

@@ -1,5 +1,6 @@
 package com.app.Task.data.repository;
 
+import com.app.Task.data.model.AppUser;
 import com.app.Task.data.model.Task;
 import com.app.Task.data.model.TaskStatus;
 import lombok.extern.slf4j.Slf4j;
@@ -17,9 +18,10 @@ class TaskRepositoryTest {
 
     @Autowired
     TaskRepository repository;
-
+    AppUser user;
     @BeforeEach
     void setUp() {
+        user = new AppUser();
     }
 
     @AfterEach
@@ -29,9 +31,11 @@ class TaskRepositoryTest {
     @Test
     void createdTaskTest(){
         Task myTask = Task.builder()
-                .name("Clean the bath-room")
+                .title("Clean the bath-room")
                 .type("Toilet job")
-                .status(TaskStatus.OPEN).build();
+                .status(TaskStatus.OPEN)
+                .assignee(user)
+                .build();
         log.info("Task object created ---> {}", myTask);
         repository.save(myTask);
 

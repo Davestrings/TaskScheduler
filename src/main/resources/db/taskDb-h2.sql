@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS
-CREATE SCHEMA IF NOT EXIST taskDb
+-- CREATE DATABASE IF NOT EXISTS
+-- CREATE SCHEMA IF NOT EXIST taskDb
 
 
 INSERT INTO users(`id`, `username`, `password`,`isActive`, `roles`)

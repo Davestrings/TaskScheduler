@@ -15,23 +15,24 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(catalog = "tasks")
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(nullable = false)
-    private String name;
+    private String title;
 
     private String type;
 
-    @Column(length = 1000, name = "description")
+    @Column(length = 1000, columnDefinition = "description")
     private String description;
 
-    @Column(length = 5000, name = "details")
+    @Column(length = 5000, columnDefinition = "details")
     private String detail;
 
-    @Column(name = "comments")
+    @Column(columnDefinition = "comments")
     private String comment;
 
     @CreationTimestamp
@@ -43,7 +44,7 @@ public class Task {
     @Temporal(TemporalType.TIMESTAMP)
     private Date expiredAt;
 
-    @JoinColumn(columnDefinition = "assignee_user_id", name = "assignee_user_id")
+    @JoinColumn(columnDefinition = "assignee_user_id")
     @ManyToOne(optional = false)
     private AppUser assignee;
 

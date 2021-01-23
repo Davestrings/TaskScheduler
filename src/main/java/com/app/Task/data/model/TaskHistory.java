@@ -13,6 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(catalog = "task_history")
 public class TaskHistory {
 
     @Id
@@ -22,11 +23,11 @@ public class TaskHistory {
     @Column(length = 1000)
     private String description;
 
-    @JoinColumn(name = "task_id")
+    @JoinColumn(columnDefinition = "task_id")
     @ManyToOne(optional = false)
     private Task task;
 
-    @Column(name = "comments", length = 300)
+    @Column(columnDefinition = "comments", length = 300)
     private String comment;
 
     @CreationTimestamp
